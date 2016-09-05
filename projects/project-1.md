@@ -2,13 +2,14 @@
 layout: project
 type: project
 image: images/green.png
-title: Smiles
+title: Smiles Board Game
 permalink: projects/Smiles
-date: 2014
+date: 2013
 labels:
-  - Design
   - C++
-summary: a simple game developed for a school project.
+  - GitHub
+summary: board game code made for a class project.
+---
 
 
 void main(){
