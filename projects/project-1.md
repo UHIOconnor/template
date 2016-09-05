@@ -271,4 +271,3 @@ void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
 void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
 int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley);
 
-
