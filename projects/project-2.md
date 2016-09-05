@@ -6,9 +6,7 @@ title: Rock Paper Scissors
 permalink: projects/RPS
 date: 2013
 labels:
-  - Javascript
-  - Meteor
-  - MongoDB
+  - C++
   - GitHub
 summary: simple rock paper scissors code made for a class project.
 ---
