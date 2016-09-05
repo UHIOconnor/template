@@ -9,7 +9,6 @@ labels:
   - Design
   - C++
 summary: a simple game developed for a school project.
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -272,7 +271,4 @@ void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
 void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
 int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley);
 
-
-
----
 
