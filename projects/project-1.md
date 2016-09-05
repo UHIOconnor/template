@@ -62,6 +62,7 @@ while (done != 0){
 }
 
 int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley){
+
     if (adjSmiley = 6){
         smiley->Status = SICK;
     }
@@ -96,6 +97,7 @@ int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley){
 
 // prints a character corresponding to each type //
 void PrintSmileyStateSymbol(Smiley* smiley){
+
     if(smiley->Smileytype == 1){
         printf("I");}
     if(smiley->Smileytype == 3){
@@ -111,6 +113,7 @@ void PrintSmileyStateSymbol(Smiley* smiley){
 }
 // goes through the array and possibly changing each smiley it encounters and moving them //
 void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
+
     int temp;
     int i = 0;
     int j = 0;
@@ -214,6 +217,7 @@ void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
 
 	// prints the array of smileys//
 void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
+
     int i = 0;
     int j = 0;
     for (i = 0; i < BOARD_SIZE;i++){
