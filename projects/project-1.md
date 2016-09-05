@@ -9,16 +9,6 @@ labels:
   - Design
   - C++
 summary: a simple game developed for a school project.
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "Smiley.h"
-
-/////////////////////////////////
-// Main.c                      //
-//A Smiley game program        //
-//Ian O'Connor                 //
-/////////////////////////////////
 
 void main(){
 int done = 1;
@@ -57,18 +47,9 @@ while (done != 0){
 }
 }
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "Smiley.h"
-/////////////////////////////////
-// Smiley.c                    //
-//A collection of funxtions    //
-//for main.c                   //
-//Ian O'Connor                 //
-/////////////////////////////////
 
 
-//changes the  smileys type if it encounters a adjacent smiley//
+
 int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley){
     if (adjSmiley = 6){
         smiley->Status = SICK;
@@ -237,12 +218,6 @@ void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
 }
 
 
-/////////////////////////////////
-// Main.c                      //
-//A collection of constants    //
-//and prototypes               //
-//Ian O'Connor                 //
-/////////////////////////////////
 
 
 // Constants//
