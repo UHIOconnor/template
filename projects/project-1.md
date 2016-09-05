@@ -231,3 +231,22 @@ void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
     }
    
 }
+
+typedef struct Smiley {
+
+    int Smileytype;
+    double Health;
+    double Xpos;
+    double Ypos;
+    int Status;
+    int Change;
+} Smiley;
+//prototypes//
+
+void PrintSmileyStateSymbol(Smiley* smiley);
+
+void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
+
+void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
+
+int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley);
