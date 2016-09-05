@@ -2,28 +2,274 @@
 layout: project
 type: project
 image: images/green.png
-title: Micromouse
-permalink: projects/micromouse
-date: 2015
+title: Smiles
+permalink: projects/Smiles
+date: 2014
 labels:
-  - Robotics
-  - Arduino
+  - Design
   - C++
-summary: My team developed a robotic mouse that won first place in the 2015 UH Micromouse competition.
+summary: a simple game developed for a school project.
 ---
 
-<div class="ui small rounded images">
-  <img class="ui image" src="../images/micromouse-robot.png">
-  <img class="ui image" src="../images/micromouse-robot-2.jpg">
-  <img class="ui image" src="../images/micromouse.jpg">
-  <img class="ui image" src="../images/micromouse-circuit.png">
-</div>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "Smiley.h"
 
-Micromouse is an event where small robot “mice” solve a 16 x 16 maze.  Events are held worldwide.  The maze is made up of a 16 by 16 gird of cells, each 180 mm square with walls 50 mm high.  The mice are completely autonomous robots that must find their way from a predetermined starting position to the central area of the maze unaided.  The mouse will need to keep track of where it is, discover walls as it explores, map out the maze and detect when it has reached the center.  having reached the center, the mouse will typically perform additional searches of the maze until it has found the most optimal route from the start to the center.  Once the most optimal route has been determined, the mouse will run that route in the shortest possible time.
+/////////////////////////////////
+// Main.c                      //
+//A Smiley game program        //
+//Ian O'Connor                 //
+/////////////////////////////////
 
-For this project, I was the lead programmer who was responsible for programming the various capabilities of the mouse.  I started by programming the basics, such as sensor polling and motor actuation using interrupts.  From there, I then programmed the basic PD controls for the motors of the mouse.  The PD control the drive so that the mouse would stay centered while traversing the maze and keep the mouse driving straight.  I also programmed basic algorithms used to solve the maze such as a right wall hugger and a left wall hugger algorithm.  From there I worked on a flood-fill algorithm to help the mouse track where it is in the maze, and to map the route it takes.  We finished with the fastest mouse who finished the maze within our college.
+void main(){
+int done = 1;
+int xpos;
+int ypos;
+int type;
+int i;
+int j;
+Smiley* newSmiley;
+Smiley* Sarray[BOARD_SIZE][BOARD_SIZE];
+srand(time(NULL));
+printf("Welcome to the Smiley game \nfollow prompts to add smileys to the board\n");
+for (i = 0; i < BOARD_SIZE;i++){
+        for(j = 0;j < BOARD_SIZE;j++){
+            Sarray[j][i] = NULL;
+        }
+}
+while (done != 0){
+    printf("please add a smiley to the board by type two numbers(x y) for its position\n");
+    scanf("%d",&xpos);
+    scanf("%d",&ypos);
+    printf("please select the smiley you would like \n1:Indifferent \n2:Happy \n3:Grumpy \n4:Doctor \n5:Leader \n6:Germ\n");
+    scanf("%d",&type);
+    newSmiley = malloc(sizeof(Smiley));
+    newSmiley->Smileytype = type;
+    newSmiley->Health = 5;
+    newSmiley->Xpos = xpos;
+    newSmiley->Ypos = ypos;
+    newSmiley->Status = HEALTHY;
+    Sarray[xpos][ypos] = newSmiley;
+    IterateBoard(Sarray);
+    PrintBoard(Sarray);
+    printf("press 0 to exit or any other number to continue\n");
+    scanf("%d",&done);
+   
+}
+}
 
-You can learn more at the [UH Micromouse Website](http://www-ee.eng.hawaii.edu/~mmouse/about.html).
+#include <stdio.h>
+#include <stdlib.h>
+#include "Smiley.h"
+/////////////////////////////////
+// Smiley.c                    //
+//A collection of funxtions    //
+//for main.c                   //
+//Ian O'Connor                 //
+/////////////////////////////////
 
 
+//changes the  smileys type if it encounters a adjacent smiley//
+int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley){
+    if (adjSmiley = 6){
+        smiley->Status = SICK;
+    }
+
+    if (adjSmiley = 4){
+        smiley->Health = 5;
+        smiley->Status = HEALTHY;}
+
+    if (smiley->Status == 2) {
+        smiley->Health = (smiley->Health -1);
+        if (smiley->Health == 0){
+            return 1;}
+    }
+    if (adjSmiley == 5){
+        int temp = rand() % 6;
+        if (temp == 1){
+            smiley->Smileytype = 5;}
+    }
+    if (adjSmiley == 2){
+        int temp = rand() % 4;
+        if (temp == 1){
+            smiley->Smileytype = 2;}
+    }
+    if(adjSmiley == 3){
+        int temp = rand() % 3;
+        if (temp == 1){
+            smiley->Smileytype = 3;}
+    }
+    smiley->Change = 1;
+    return 0;
+}
+
+// prints a character corresponding to each type //
+void PrintSmileyStateSymbol(Smiley* smiley){
+    if(smiley->Smileytype == 1){
+        printf("I");}
+    if(smiley->Smileytype == 3){
+        printf("G");}
+    if(smiley->Smileytype == 2){
+        printf("H");}
+    if(smiley->Smileytype == 4){
+        printf("D");}
+    if(smiley->Smileytype == 5){
+        printf("L");}
+    if(smiley->Smileytype == 6){
+        printf("X");}
+}
+// goes through the array and possibly changing each smiley it encounters and moving them //
+void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
+    int temp;
+    int i = 0;
+    int j = 0;
+    int k = -1;
+    int r = -1;
+    for (i = 0;i < BOARD_SIZE;i++){
+        for(j = 0;j < BOARD_SIZE;j++){
+            if(Sarray[j][i] != NULL && Sarray[j][i]->Smileytype != 6){
+                for (k = -1;k<3;k++){
+                    for (r = -1; r<3;r++){
+                        if(Sarray[j+r][i+k] != NULL && j+r < 9 && i+k < 9){
+                            if (Sarray[j][i] == 0){
+                                temp = PossiblyChangeSmileyState(Sarray[j][i],Sarray[j+r][i+k]->Smileytype);
+                                if (temp == 1){
+                                    free(Sarray[j][i]);
+                                }
+                            }
+                        }
+                    }
+                }
+                                temp = rand() % 9;
+                                switch(temp){
+                                case 1:
+                                    if (Sarray[j-1][i+1] == NULL){
+                                        Sarray[j-1][i+1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 2:
+                                    if (Sarray[j][i+1] == NULL){
+                                        Sarray[j][i+1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 3:
+                                    if (Sarray[j+1][i+1] == NULL){
+                                        Sarray[j][i+1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 4:
+                                    if (Sarray[j-1][i] == NULL){
+                                        Sarray[j-1][i] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 5:
+                                    if (Sarray[j][i] == NULL){
+                                        Sarray[j][i] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 6:
+                                    if (Sarray[j+1][i] == NULL){
+                                        Sarray[j+1][i] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 7:
+                                    if (Sarray[j-1][i-1] == NULL){
+                                        Sarray[j-1][i-1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 8:
+                                    if (Sarray[j][i-1] == NULL){
+                                        Sarray[j][i-1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 9:
+                                    if (Sarray[j+1][i-1] == NULL){
+                                        Sarray[j+1][i-1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                }
+                }
+            }
+        }
+    }
+
+
+	// prints the array of smileys//
+void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
+    int i = 0;
+    int j = 0;
+    for (i = 0; i < BOARD_SIZE;i++){
+        for(j = 0;j < BOARD_SIZE;j++){
+            if(Sarray[j][i] != NULL){
+                PrintSmileyStateSymbol(Sarray[j][i]);}
+            else {
+                printf(" ");}
+        }
+        printf("\n");
+    }
+   
+}
+
+
+/////////////////////////////////
+// Main.c                      //
+//A collection of constants    //
+//and prototypes               //
+//Ian O'Connor                 //
+/////////////////////////////////
+
+
+// Constants//
+#define INDIFFERENT 1
+#define SHINY_HAPPY 2
+#define GRUMPY 3
+#define DOCTOR 4
+#define LEADER 5
+#define GERM 6
+#define HEALTHY 7
+#define SICK 8
+#define BOARD+SIZE 9
+
+//Struct//
+typedef struct Smiley {
+    int Smileytype;
+    double Health;
+    double Xpos;
+    double Ypos;
+    int Status;
+    int Change;
+} Smiley;
+//prototypes//
+void PrintSmileyStateSymbol(Smiley* smiley);
+void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
+void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
+int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley);
 
