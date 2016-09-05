@@ -2,23 +2,106 @@
 layout: project
 type: project
 image: images/Blue.png
-title: Vacay
-permalink: projects/vacay
-date: 2015
+title: Rock Paper Scissors
+permalink: projects/RPS
+date: 2013
 labels:
   - Javascript
   - Meteor
   - MongoDB
   - GitHub
-summary: A responsive web application for travel planning that my team developed in ICS 415.
+summary: simple rock paper scissors code made for a class project.
 ---
 
-<img class="ui medium right floated rounded image" src="../images/vacay-home-page.png">
+int declareWin(int, int);
 
-Vacay is a web application that I helped create as a team project in ICS 415, Spring 2015. The project helped me learn how to design and implement a responsive web site.
+main() {
 
-Vacay is implemented using [Meteor](http://meteor.com), a JavaScript application platform. Within two weeks, we created a website that implements several types of reservations including flights, hotels, and car rentals.
-
-In this project I gained experience with full-stack web application design and associated technologies, including [MongoDB](http://mongodb.com) for database storage, the [Twitter Bootstrap](http://getbootstrap.com/) CSS Framework for the user interface, and Javascript for both client and server-side programming. 
+ srand(time(0));
  
-Source: <a href="https://github.com/theVacay/vacay"><i class="large github icon"></i>theVacay/vacay</a>
+ int num;
+ 
+ int result;
+ 
+ int compnum = rand() % 3;
+ 
+ string done = false;
+ 
+ while(done == true){
+ 
+cout << " please choose rock, paper, or scissors\n";
+
+string input = cin.getline();
+
+if (input == "rock")
+
+		 num = 1;
+		 
+	else {
+	
+	   if ( input == "paper")
+	   
+		 num = 2;
+		 
+		   if (input == "scissors")
+		   
+			    num = 3;
+			    
+		   else {
+		   
+			   cout << "error";}
+			   
+	       }
+	}
+	
+int result = declareWin(num, compnum);
+
+if (result == 1){
+
+	cout << "\nYou Win";
+	
+done = true;}
+
+else{
+
+	if (result == 3)
+	
+		cout << "\nYou Lose";
+		
+		done = true;}
+		
+	}
+}
+
+int declareWin(int player,int comp) {
+
+if (player == 1 || comp == 3)
+
+		 return 1;
+		 
+	else {
+	
+	   if ( player == 2 || comp == 1)
+	   
+		 return 1;
+		 
+	   else{
+	   
+		   if (player == 3 || comp == 2)
+		   
+			    return 1;
+			    
+		   else {
+		   
+			   if (player == comp)
+			   
+		        return 2;
+		        
+			   else 
+			   
+				return 3;
+				
+		   }
+	       }
+	}
+}
