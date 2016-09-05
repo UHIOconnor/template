@@ -9,9 +9,13 @@ labels:
   - Design
   - C++
 summary: a simple game developed for a school project.
+
 #include <stdio.h>/n
+
 #include <stdlib.h>\/n
+
 #include <time.h>/n
+
 #include "Smiley.h"
 
 /////////////////////////////////
