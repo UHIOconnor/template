@@ -11,9 +11,11 @@ labels:
 
 Configuration management is one of the key tenants of software engineering. Without a system to manage contributions between team members, larger software projects would simply not be possible. The need to coordinate changes and versions between developers has driven the development of various styles of configuration management.  Each style seeks to solve three fundamental problems
 
-         The Double Maintenance Problem –  one should only have to have to update one file.
-         The Shared Data Problem – a file must be able to be accessed by multiple developers at once.
-         The Simultaneous Update Problem - a problem arising when a file is updated multiple times simultaneously.
+ The Double Maintenance Problem –  one should only have to have to update one file.
+ 
+ The Shared Data Problem – a file must be able to be accessed by multiple developers at once.
+ 
+ The Simultaneous Update Problem - a problem arising when a file is updated multiple times simultaneously.
 	
 CVS tried to solve these problems using a single repository which multiple developers had access to. To solve collisions developers could lock a file to work on to ensure that integrity is maintained. In practice however this execution is inherently clunky and slows down the project. Having worked mainly with this practice before I have had many cases where having parts of the project locked off to me needlessly complicates the project.
 
