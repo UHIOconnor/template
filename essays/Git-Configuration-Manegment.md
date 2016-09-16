@@ -1,5 +1,6 @@
 ---
 layout: essays
+permalink: essays/Git
 ---
 
 <div style="margin-top: 20px; margin-bottom: 20px" class="ui text container">
