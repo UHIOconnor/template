@@ -8,7 +8,6 @@ labels:
   - Leaning
   - Configuration Manegment
 ---
-
 Configuration management is one of the key tenants of software engineering. Without a system to manage contributions between team members, larger software projects would simply not be possible. The need to coordinate changes and versions between developers has driven the development of various styles of configuration management.  Each style seeks to solve three fundamental problems
 
 	The Double Maintenance Problem –  one should only have to have to update one file.
