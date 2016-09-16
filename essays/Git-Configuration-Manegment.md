@@ -1,7 +1,7 @@
 ---
 layout: essay
 type: essay
-title: Igniting the fire
+title: Git, Configuration Managment Done Right
 date: 2015-08-26
 labels:
   - Software Engineering
