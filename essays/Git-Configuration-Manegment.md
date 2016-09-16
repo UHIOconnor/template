@@ -1,14 +1,13 @@
 ---
-layout: project
-type: project
-image: images/green.png
-title: Smiles Board Game
-permalink: projects/Smiles
-date: 2013
+layout: essay
+type: essay
+title: Git: COnfiguration Manegment Done Right
+permalink: essays/Git
+date: 2016
 labels:
-  - C++
+  - Leaning
   - GitHub
-summary: board game code made for a class project.
+
 ---
 
 
