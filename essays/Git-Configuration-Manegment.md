@@ -1,97 +1,253 @@
-----
--layout: essay
--type: essay
--title: Smart Questions, Good Answers
--date: 2015-09-08
--labels:
--  - Questions
--  - Answers
--  - StackOverflow
-----
--
--<img class="ui medium left floated image" src="../images/rtfm.png">
--
--## Is there such thing as a stupid question?
--
--I’ve had instructors address a whole class and say, “There’s no such thing as a stupid question.” I now know that is in fact not true because I’ve challenged the statement and received the appropriate dumb-stricken, annoyed look. There are definitely stupid questions, and along with that, usually unhelpful answers. Though we all might be guilty of being callous and making people victim to our poorly formed questions, there are steps we can take to ask smarter questions that hopefully don’t illicit the dreaded “rtfm” or “stfw” response.
--
--## What’s a smart question?
--
--Stack Overflow, a question and answer site for programmers, is a great resource for anyone who may have issues with code or who may simply want to learn new or different methods of doing something. There I found examples of good questions and bad questions, which could probably be improved.
--
--In the following example, we examine the components of a decent question. In this case, the asker is trying to figure out a way to get the date of the previous month in Python.
--
--```
--Q: python date of the previous month
--
--I am trying to get the date of the previous month with python. Here is what i've tried:
--
--str( time.strftime('%Y') ) + str( int(time.strftime('%m'))-1 )
--
--However, this way is bad for 2 reasons: First it returns 20122 for the February of 2012 (instead of 201202) 
--and secondly it will return 0 instead of 12 on January.
--
--I have solved this trouble in bash with:
--
--echo $(date -d"3 month ago" "+%G%m%d")
--
--I think that if bash has a built-in way for this purpose, then python, much more equipped, should provide something 
--better than forcing writing one's own script to achieve this goal. Of course i could do something like:
--
--if int(time.strftime('%m')) == 1:
--    return '12'
--else:
--    if int(time.strftime('%m')) < 10:
--        return '0'+str(time.strftime('%m')-1)
--    else:
--        return str(time.strftime('%m') -1)
--        
--I have not tested this code and i don't want to use it anyway (unless I can't find any other way:/)
--
--Thanks for your help!
--```
--
--While the heading of his question could be better, it does convey what he’s trying to figure out. Usually something as brief as “python date of previous month” is what other users would enter in as search terms on Google, making it easily found. Another good thing about the question is that it’s not just a question. The asker shows what he or she has done and that he or she has put in some effort to answer the question. And while it may not be as important as the question itself, the asker shows courtesy, which does increase the chance of getting an answer.
--
--```
--A: datetime and the datetime.timedelta classes are your friend.
--
--1. find today
--2. use that to find the first day of this month.
--3. use timedelta to backup a single day, to the last day of the previous month.
--4. print the YYYYMM string you're looking for.
--
--Like this:
--
-- >>> import datetime
-- >>> today = datetime.date.today()
-- >>> first = datetime.date(day=1, month=today.month, year=today.year)
-- >>> lastMonth = first - datetime.timedelta(days=1)
-- >>> print lastMonth.strftime("%Y%m")
-- 201202
-- >>>
--
--```
-- 
--The asker received six possible answers, and he or she was successful in inciting discussion from multiple users. The answers themselves were clear and were devoid of the rumored sarcasm and hostility of “hackers.” Since I myself have referenced this page and found it useful, I can confidently say that it is a good question.
--
--## The foolproof way to get ignored.
--
--While there are decent questions that benefit everyone, there are those one can ask to create an entirely different effect. In the following example, a user asks how he would, in short, create a desktop application with Facebook.
--
--```
--Q: Facebook Desktop Notifier
--
--I am a beginner programmer that have never used anything other than what's included in a language.
--
--I am trying to create a desktop application that notifies me anytime I get an update onfacebook. 
--How should go about doing this? Thanks in advance.
--
--edit Sorry I was not clear. Is there any way to make a DESKTOP application with facebook?
--```
--
--A simple “yes” would have answered the question, but we know that’s not the sort of answer he or she is looking for. Fortunately, someone kindly responded with a link to Facebook’s developer website. The asker should have done more research on his or her potential project. Then further down the road, he or she could have asked more specific and detailed questions that wouldn’t require a thousand-paged response for a sufficient answer.
--
--## Conclusion
--
--When we rely on others’ generosity and expertise to provide answers to our questions, it should hold that the question we ask should be one that leads to efficient and effective help that not only benefits us, but also the people we ask and others who might ask the same question in the future. Thus, if you have a question… make it a smart one! Asking questions may not always get you the best answer, but asking them in a way that will make others want to answer them will increase the success of finding a good solution and make it a positive experience on all sides.
+---
+layout: project
+type: project
+image: images/green.png
+title: Smiles Board Game
+permalink: projects/Smiles
+date: 2013
+labels:
+  - C++
+  - GitHub
+summary: board game code made for a class project.
+---
+
+
+void main(){
+
+int done = 1;
+
+int xpos;
+
+int ypos;
+
+int type;
+
+int i;
+
+int j;
+
+Smiley* newSmiley;
+
+Smiley* Sarray[BOARD_SIZE][BOARD_SIZE];
+
+srand(time(NULL));
+
+printf("Welcome to the Smiley game \nfollow prompts to add smileys to the board\n");
+
+for (i = 0; i < BOARD_SIZE;i++){
+
+        for(j = 0;j < BOARD_SIZE;j++){
+            Sarray[j][i] = NULL;
+        }
+}
+while (done != 0){
+
+    printf("please add a smiley to the board by type two numbers(x y) for its position\n");
+    scanf("%d",&xpos);
+    scanf("%d",&ypos);
+    printf("please select the smiley you would like \n1:Indifferent \n2:Happy \n3:Grumpy \n4:Doctor \n5:Leader \n6:Germ\n");
+    scanf("%d",&type);
+    newSmiley = malloc(sizeof(Smiley));
+    newSmiley->Smileytype = type;
+    newSmiley->Health = 5;
+    newSmiley->Xpos = xpos;
+    newSmiley->Ypos = ypos;
+    newSmiley->Status = HEALTHY;
+    Sarray[xpos][ypos] = newSmiley;
+    IterateBoard(Sarray);
+    PrintBoard(Sarray);
+    printf("press 0 to exit or any other number to continue\n");
+    scanf("%d",&done);
+   
+}
+}
+
+int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley){
+
+    if (adjSmiley = 6){
+        smiley->Status = SICK;
+    }
+
+    if (adjSmiley = 4){
+        smiley->Health = 5;
+        smiley->Status = HEALTHY;}
+
+    if (smiley->Status == 2) {
+        smiley->Health = (smiley->Health -1);
+        if (smiley->Health == 0){
+            return 1;}
+    }
+    if (adjSmiley == 5){
+        int temp = rand() % 6;
+        if (temp == 1){
+            smiley->Smileytype = 5;}
+    }
+    if (adjSmiley == 2){
+        int temp = rand() % 4;
+        if (temp == 1){
+            smiley->Smileytype = 2;}
+    }
+    if(adjSmiley == 3){
+        int temp = rand() % 3;
+        if (temp == 1){
+            smiley->Smileytype = 3;}
+    }
+    smiley->Change = 1;
+    return 0;
+}
+
+// prints a character corresponding to each type //
+void PrintSmileyStateSymbol(Smiley* smiley){
+
+    if(smiley->Smileytype == 1){
+        printf("I");}
+    if(smiley->Smileytype == 3){
+        printf("G");}
+    if(smiley->Smileytype == 2){
+        printf("H");}
+    if(smiley->Smileytype == 4){
+        printf("D");}
+    if(smiley->Smileytype == 5){
+        printf("L");}
+    if(smiley->Smileytype == 6){
+        printf("X");}
+}
+// goes through the array and possibly changing each smiley it encounters and moving them //
+void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
+
+    int temp;
+    int i = 0;
+    int j = 0;
+    int k = -1;
+    int r = -1;
+    for (i = 0;i < BOARD_SIZE;i++){
+        for(j = 0;j < BOARD_SIZE;j++){
+            if(Sarray[j][i] != NULL && Sarray[j][i]->Smileytype != 6){
+                for (k = -1;k<3;k++){
+                    for (r = -1; r<3;r++){
+                        if(Sarray[j+r][i+k] != NULL && j+r < 9 && i+k < 9){
+                            if (Sarray[j][i] == 0){
+                                temp = PossiblyChangeSmileyState(Sarray[j][i],Sarray[j+r][i+k]->Smileytype);
+                                if (temp == 1){
+                                    free(Sarray[j][i]);
+                                }
+                            }
+                        }
+                    }
+                }
+                                temp = rand() % 9;
+                                switch(temp){
+                                case 1:
+                                    if (Sarray[j-1][i+1] == NULL){
+                                        Sarray[j-1][i+1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 2:
+                                    if (Sarray[j][i+1] == NULL){
+                                        Sarray[j][i+1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 3:
+                                    if (Sarray[j+1][i+1] == NULL){
+                                        Sarray[j][i+1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 4:
+                                    if (Sarray[j-1][i] == NULL){
+                                        Sarray[j-1][i] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 5:
+                                    if (Sarray[j][i] == NULL){
+                                        Sarray[j][i] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 6:
+                                    if (Sarray[j+1][i] == NULL){
+                                        Sarray[j+1][i] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 7:
+                                    if (Sarray[j-1][i-1] == NULL){
+                                        Sarray[j-1][i-1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 8:
+                                    if (Sarray[j][i-1] == NULL){
+                                        Sarray[j][i-1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                case 9:
+                                    if (Sarray[j+1][i-1] == NULL){
+                                        Sarray[j+1][i-1] = Sarray[j][i];}
+                                    if(Sarray[j][i]->Status == HEALTHY){
+                                        free(Sarray[j][i]);}
+                                    else{
+                                        Sarray[j][i]->Smileytype = 6;}
+                                    break;
+                                }
+                }
+            }
+        }
+    }
+
+
+	// prints the array of smileys//
+void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]){
+
+    int i = 0;
+    int j = 0;
+    for (i = 0; i < BOARD_SIZE;i++){
+        for(j = 0;j < BOARD_SIZE;j++){
+            if(Sarray[j][i] != NULL){
+                PrintSmileyStateSymbol(Sarray[j][i]);}
+            else {
+                printf(" ");}
+        }
+        printf("\n");
+    }
+   
+}
+
+typedef struct Smiley {
+
+    int Smileytype;
+    double Health;
+    double Xpos;
+    double Ypos;
+    int Status;
+    int Change;
+} Smiley;
+//prototypes//
+
+void PrintSmileyStateSymbol(Smiley* smiley);
+
+void IterateBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
+
+void PrintBoard(Smiley* Sarray[BOARD_SIZE][BOARD_SIZE]);
+
+int PossiblyChangeSmileyState(Smiley* smiley, int adjSmiley);
