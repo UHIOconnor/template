@@ -2,7 +2,7 @@
 layout: essay
 type: essay
 title: Git, Configuration Managment Done Right
-date: 2015-08-26
+date: 2016-09-16
 labels:
   - Github
   - Learning
