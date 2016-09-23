@@ -1,7 +1,15 @@
-Git: Configuration Management the Right Way
-	Configuration management is one of the key tenants of software engineering. Without a system to manage contributions between team members, larger software projects would simply not be possible. The need to coordinate changes and versions between developers has driven the development of various styles of configuration management.  Each style seeks to solve three fundamental problems
-	The Double Maintenance Problem –  one should only have to have to update one file.
-	The Shared Data Problem – a file must be able to be accessed by multiple developers at once.
-	The Simultaneous Update Problem - a problem arising when a file is updated multiple times simultaneously.
-CVS tried to solve these problems using a single repository which multiple developers had access to. To solve collisions developers could lock a file to work on to ensure that integrity is maintained. In practice however this execution is inherently clunky and slows down the project. Having worked mainly with this practice before I have had many cases where having parts of the project locked off to me needlessly complicates the project.
-	Git however elegantly solves this by allowing each developer to maintain their own repository. Each developer can than chose when they want to pull other peoples updated files or push their own changes. This allows Git to maintain system integrity while still giving the individual developer complete freedom to make changes. While part of GitHub’s success may be due to being one of the largest sources of open source software I definitely feel that its success is due to how much Git facilitates the development of open source software. From my past experiences with CVS styles I am definitely looking forward to the flexibility Git provides.
+---
+layout: essay
+type: essay
+title: The Importance of Coding Standards
+date: 2016-09-22
+labels:
+  - Coding Standards
+  - ESLint
+---
+
+
+
+	Coding standards may seem like an unnecessary hassle when one is starting out with code. This can seem especially true when using tools like ESLint as it constantly flags tiny mistakes.  And while it might seem frivolous when one is writing small projects that only a small amount of people will see, one must keep the bigger picture in mind. Enforcing coding standards improves the codes readability allowing the purpose of a line of code to be more easily grasped or to facilitate debugging the code.  ESLint further improve this by enforcing by creating a standard that even someone who has just picked up the language can write in a widely used standard.
+	
+	This benefit to using a coding standard is magnified when working on large projects.  Each individual coder has their own set of rules for code style they were taught, but something like ESLint allows you to have a consistent coding style throughout. The extra time needed to confirm to a coding standard is peanuts next to time that could be saved wasted on trying to understand or debug unclear code.  Powerful tools like ESLint can also can help you clean up your old code, for example flagging variables that are no longer being used.
