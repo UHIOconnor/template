@@ -5,7 +5,7 @@ title: Semantic UI – Coding using the English Language
 date: 2016-10-06
 labels:
   - Coding Standards
-  - ESLint
+  - Semantic UI
 ---
 Picking up a UI framework is no easy task and we might ask ourselves why even bother when html is honestly not that difficult. However after putting in the time in a framework like semantic UI the benefits can easily be seen in the code. Semantic UI brings with it powerful library of classes that are modular and make editing a UI element simple. But even more impressive is it accomplishes this through use of easily readable English phrases. If I do not know html even the simplest code can seem difficult especially in a large project for example even a basic image would need a class in the css like
 
