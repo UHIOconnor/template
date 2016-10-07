@@ -7,6 +7,7 @@ labels:
   - Coding Standards
   - ESLint
 ---
+Picking up a UI framework is no easy task and we might ask ourselves why even bother when html is honestly not that difficult. However after putting in the time in a framework like semantic UI the benefits can easily be seen in the code. Semantic UI brings with it powerful library of classes that are modular and make editing a UI element simple. But even more impressive is it accomplishes this through use of easily readable English phrases. If I do not know html even the simplest code can seem difficult especially in a large project for example even a basic image would need a class in the css like
 
 ```
 function reverseString(string){
@@ -19,8 +20,6 @@ return string;
 }
 ```
 
-One can see that without the use of coding standards even simple code like this would be difficult to debug and mantain.
-
 ```
 function reverseString(string) {
   let newString = '';
@@ -31,6 +30,3 @@ function reverseString(string) {
 }
 ```
 
-however by taking a minute using ESLint with the code it is now much more readable.
-	
-This benefit to using a coding standard is magnified when working on large projects.  Each individual coder has their own set of rules for code style they were taught, but something like ESLint allows you to have a consistent coding style throughout. The extra time needed to confirm to a coding standard is peanuts next to time that could be saved wasted on trying to understand or debug unclear code.  Powerful tools like ESLint can also can help you clean up your old code, for example flagging variables that are no longer being used.
