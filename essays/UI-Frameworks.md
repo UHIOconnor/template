@@ -19,7 +19,7 @@ where now we would need to look at the style sheet to see exactly what the modif
 ```
 We can see immediatly the modifications to the image without needing to consult another page assuming we are farmiliar with Semantic UI and even if we are not we could make some reasonable assumptions about what this code is doing. This freedom from using the CSS stylesheet for every element of a page or making inline style changes allows us to make the code much more readable even for those without in depth knowledge of Semantic UI
 
-Another example is creating  a simple header and we can see how simple and readable Semantic UI makes the code
+Another example is creating a basic header and we can see how simple and readable Semantic UI makes the code
 
 ```
 <div class="ui borderless menu">
