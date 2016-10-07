@@ -13,6 +13,7 @@ Picking up a UI framework is no easy task and we might ask ourselves why even bo
 <img class=”image5class”  src="Image">
 ```
 where now we would need to look at the style sheet to see exactly what the modifications to the image the code is making. However if we take a look at how such code might look in Semantic UI
+
 ```
 <img class=”ui medium fluid bordered image”  src="Image">
 ```
