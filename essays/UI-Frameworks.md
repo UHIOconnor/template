@@ -1,7 +1,7 @@
 ---
 layout: essay
 type: essay
-title: Semantic UI – Coding Using the English Language
+title: Semantic UI – Coding Using The English Language
 date: 2016-10-06
 labels:
   - Coding Standards
