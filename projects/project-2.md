@@ -1,7 +1,7 @@
 ---
 layout: project
 type: project
-image: images/Blue.png
+image: images/scissorsthumb.png
 title: Rock Paper Scissors
 permalink: projects/RPS
 date: 2013
