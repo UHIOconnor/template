@@ -17,3 +17,5 @@ outside of the systems security. The diagram on the left illustrates how the cha
 Trojan present and the diagram on the right demonstrates a channel where a Trojan has created a covert
 channel.
 <img class="ui floated left image" style="margin-bottom: 20px" src="../images/trojan.png">
+Also in the project i went over how the trojan could find its way onto the hosts system initially such as phishing
+or pharming.
