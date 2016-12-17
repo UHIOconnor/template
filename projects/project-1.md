@@ -1,7 +1,7 @@
 ---
 layout: project
 type: project
-image: images/home.png
+image: images/green.png
 title: Cram
 permalink: projects/Cram
 date: 2016
