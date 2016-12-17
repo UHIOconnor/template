@@ -1,7 +1,7 @@
 ---
 layout: project
 type: project
-image: images/Blue.png
+image: images/trojanthumb.png
 title: Covert Channels
 permalink: projects/CC
 date: 2016
